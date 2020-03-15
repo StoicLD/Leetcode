@@ -1,4 +1,4 @@
-package com.joker.tree;
+package com.joker.tree.medium;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Stack;
 
 /**
- * This is Leetcode 94 Binary Tree Inorder Traversal
+ * This is LeetCode 94 Binary Tree Inorder Traversal
  *
  * @author Joker
  * @version 1.0
