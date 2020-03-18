@@ -11,17 +11,6 @@ import java.util.Stack;
  */
 public class ValidateBinarySearchTree
 {
-    public static class TreeNode
-    {
-        int val;
-        TreeNode left;
-        TreeNode right;
-        TreeNode(int x)
-        {
-            val = x;
-        }
-    }
-
     /**
      * 第一种方法，递归判定
      * @param root 根节点

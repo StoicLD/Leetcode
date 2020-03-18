@@ -26,17 +26,6 @@ public class BinaryTreeInorderTraversal
 
         Output: [1,3,2]
      */
-    public static class TreeNode
-    {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x)
-        {
-            val = x;
-        }
-    }
 
     /**
      * 方法一，递归的方法。写一个helper method然后递归就完事了
