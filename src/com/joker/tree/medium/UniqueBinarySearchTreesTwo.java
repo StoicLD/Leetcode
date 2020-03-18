@@ -1,6 +1,5 @@
 package com.joker.tree.medium;
 
-import java.lang.reflect.GenericArrayType;
 import java.util.*;
 
 import static java.util.List.of;
@@ -68,8 +67,7 @@ public class UniqueBinarySearchTreesTwo
         }
         return result;
     }
-    
-    
+
     public TreeNode copyTree(TreeNode root)
     {
         if(root == null)
@@ -80,10 +78,64 @@ public class UniqueBinarySearchTreesTwo
         return copyRoot;
     }
 
+    /**
+     * 这事实上是一种DP的方法
+     * @param n
+     * @return
+     */
+    public List<TreeNode> generateTrees2(int n)
+    {
+        if(n == 0)
+            return new LinkedList<>();
+        List<List<TreeNode> > constructTreeList = new LinkedList<>();
+        LinkedList<TreeNode> s = new LinkedList<>();
+        s.add(null);
+        constructTreeList.add(s);
+        constructTreeList.add(new LinkedList<>(Arrays.asList(new TreeNode(1))));
+
+        for(int i = 2; i <= n; i++)
+        {
+            List<TreeNode> currList = new LinkedList<>();
+            for(int j = 0; j < i; j++)
+            {
+                //C(0) * C(n - 1)的自由组合
+                List<TreeNode> list1 = constructTreeList.get(j);
+                List<TreeNode> list2 = constructTreeList.get(i - 1 - j);
+
+                for(int leftIndex = 0; leftIndex < list1.size(); leftIndex++)
+                {
+                    TreeNode leftRoot = list1.get(leftIndex);
+                    for(int rightIndex = 0; rightIndex < list2.size(); rightIndex++)
+                    {
+                        TreeNode root = new TreeNode(j + 1);
+                        root.left = copyTreeGiveValue(leftRoot, 0);
+                        currList.add(root);
+                        root.right = copyTreeGiveValue(list2.get(rightIndex), j + 1);
+                    }
+                }
+            }
+            constructTreeList.add(currList);
+        }
+
+        //完成构造之后，先序遍历
+        return constructTreeList.get(n);
+    }
+
+    public TreeNode copyTreeGiveValue(TreeNode root, int addValue)
+    {
+        if(root == null)
+            return null;
+        TreeNode node = new TreeNode(root.val + addValue);
+        node.left = copyTreeGiveValue(root.left, addValue);
+        node.right = copyTreeGiveValue(root.right, addValue);
+        return node;
+    }
+
+
     public static void main(String[] args)
     {
         UniqueBinarySearchTreesTwo ub = new UniqueBinarySearchTreesTwo();
-        ub.generateTrees(3);
+        ub.generateTrees2(3);
     }
 
 }
