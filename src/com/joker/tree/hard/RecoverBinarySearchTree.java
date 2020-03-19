@@ -13,6 +13,7 @@ public class RecoverBinarySearchTree
      */
     public void recoverTree(TreeNode root)
     {
+        //inorder遍历之后所有节点按照从小到大在这个list里（除了两个反常的节点顺序有问题）
         List<TreeNode> list = new ArrayList<>();
         Stack<TreeNode> stack = new Stack<>();
         if(root == null || (root.left == null && root.right == null))
@@ -30,10 +31,12 @@ public class RecoverBinarySearchTree
             list.add(currNode);
             currNode = currNode.right;
         }
+        //两个pointer，一个从头，一个从尾
         int leftPointer = 0;
         int rightPointer = list.size() - 1;
         for(; leftPointer < list.size() - 1; leftPointer++)
         {
+            //发现反常顺序了，记录
             if(list.get(leftPointer).val > list.get(leftPointer + 1).val)
             {
                 break;
@@ -41,11 +44,13 @@ public class RecoverBinarySearchTree
         }
         for(; rightPointer > 0; rightPointer--)
         {
+            //发现反常顺序了，记录
             if(list.get(rightPointer).val < list.get(rightPointer - 1).val)
             {
                 break;
             }
         }
+        //判断是否交换
         if(leftPointer != rightPointer)
         {
             TreeNode largerNode = list.get(leftPointer);
@@ -54,10 +59,6 @@ public class RecoverBinarySearchTree
             largerNode.val = smallerNode.val;
             smallerNode.val = temp;
         }
-//        for(TreeNode node : list)
-//        {
-//            System.out.println(node.val);
-//        }
     }
 
     public void recoverTree2(TreeNode root)
@@ -66,9 +67,12 @@ public class RecoverBinarySearchTree
         if(root == null || (root.left == null && root.right == null))
             return;
         TreeNode currNode = root;
+        //inorder遍历中的前一个节点
         TreeNode preNode = null;
-        TreeNode leftSwapNode = null;
-        TreeNode rightSwapNode = null;
+        //第一个出问题的节点
+        TreeNode firstSwapNode = null;
+        //第二个出问题的节点
+        TreeNode secondSwapNode = null;
         //inorder遍历
         while(currNode != null || !stack.empty())
         {
@@ -80,16 +84,18 @@ public class RecoverBinarySearchTree
             currNode = stack.pop();
             if(preNode != null)
             {
+                //发现出问题了，前一个节点本来应该比当前小的
+                //现在比当前节点要大
                 if(preNode.val > currNode.val)
                 {
-                    if(leftSwapNode == null)
+                    if(firstSwapNode == null)
                     {
-                        leftSwapNode = preNode;
-                        rightSwapNode = currNode;
+                        firstSwapNode = preNode;
+                        secondSwapNode = currNode;
                     }
                     else
                     {
-                        rightSwapNode = currNode;
+                        secondSwapNode = currNode;
                         break;
                     }
                 }
@@ -97,12 +103,12 @@ public class RecoverBinarySearchTree
             preNode = currNode;
             currNode = currNode.right;
         }
-
-        if(leftSwapNode != null && rightSwapNode != null)
+        //交换节点
+        if(firstSwapNode != null && secondSwapNode != null)
         {
-            int temp = leftSwapNode.val;
-            leftSwapNode.val = rightSwapNode.val;
-            rightSwapNode.val = temp;
+            int temp = firstSwapNode.val;
+            firstSwapNode.val = secondSwapNode.val;
+            secondSwapNode.val = temp;
         }
     }
 
