@@ -1,4 +1,6 @@
-package com.joker.tree.medium;
+package com.joker.tree.hard;
+
+import com.joker.tree.medium.TreeNode;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
