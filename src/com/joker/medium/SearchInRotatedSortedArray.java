@@ -1,4 +1,4 @@
-package com.joker.binarySearch.medium;
+package com.joker.medium;
 
 
 /**

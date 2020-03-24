@@ -1,4 +1,4 @@
-package com.joker.tree.medium;
+package com.joker.medium;
 
 import java.util.Stack;
 

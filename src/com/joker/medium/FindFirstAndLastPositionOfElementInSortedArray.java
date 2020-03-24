@@ -1,4 +1,4 @@
-package com.joker.binarySearch.medium;
+package com.joker.medium;
 
 /**
  * This is for leetCode 34 Find First and Last Position of Element in Sorted Array

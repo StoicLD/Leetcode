@@ -1,6 +1,6 @@
-package com.joker.tree.hard;
+package com.joker.hard;
 
-import com.joker.tree.medium.TreeNode;
+import com.joker.medium.TreeNode;
 
 import java.util.*;
 

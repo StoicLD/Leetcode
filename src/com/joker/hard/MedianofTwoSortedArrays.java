@@ -1,4 +1,4 @@
-package com.joker.binarySearch.hard;
+package com.joker.hard;
 
 import org.junit.Assert;
 

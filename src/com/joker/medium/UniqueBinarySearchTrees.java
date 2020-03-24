@@ -1,4 +1,4 @@
-package com.joker.tree.medium;
+package com.joker.medium;
 
 /**
  * This is LeetCode 96 Unique Binary Search Trees

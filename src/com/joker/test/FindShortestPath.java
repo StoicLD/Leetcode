@@ -1,11 +1,9 @@
-package com.joker.graph.test;
+package com.joker.test;
 
 import edu.princeton.cs.algs4.Digraph;
-import edu.princeton.cs.algs4.Graph;
 import org.junit.Assert;
 
 import java.util.Arrays;
-import java.util.Stack;
 
 public class FindShortestPath
 {
