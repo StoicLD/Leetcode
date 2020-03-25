@@ -5,7 +5,7 @@ package com.joker.medium;
  */
 public class PopulatingNextRightPointersInEachNode
 {
-    class Node {
+    private static class Node {
         public int val;
         public Node left;
         public Node right;
