@@ -1,7 +1,6 @@
 package com.joker.hard;
 
 import com.joker.medium.TreeNode;
-import com.joker.medium.ValidateBinarySearchTree;
 import org.junit.Assert;
 
 public class BinaryTreeMaximumPathSum
