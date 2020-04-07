@@ -105,7 +105,7 @@ public class GroupAnagrams
         String[] strs = {"eat", "tea", "tan", "ate", "nat", "bat"};
         GroupAnagrams ga = new GroupAnagrams();
         ga.groupAnagrams3(strs);
-        char[] cc = {1,0,0,0,1,0,0,1};
+        char[] cc = {20,21,22,11,12,0,0};
         System.out.print(String.valueOf(cc));
     }
 
