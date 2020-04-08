@@ -1,12 +1,8 @@
 package com.joker.medium;
-
 import com.joker.TreeNode;
-
 import java.util.LinkedList;
 import java.util.List;
-import java.util.PriorityQueue;
 import java.util.Stack;
-
 /**
  * This is for LeetCode 103 Binary Tree Zigzag Level Order Traversal
  */
