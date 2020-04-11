@@ -48,6 +48,12 @@ public class LongestPalindromicSubstring
         return result.toString();
     }
 
+    /**
+     * 一种DP的方法，如果说 f(i,j)指的是以下标i为起点，下表j为终点的字符串是否为回文串
+     * 那么 f(i,j) = f(i + 1, j - 1) && s.charAt(i) == s.charAt(j)
+     * @param s 输入字符串
+     * @return 最长回文子串
+     */
     public String longestPalindrome2(String s)
     {
         if (s.length() == 0)
