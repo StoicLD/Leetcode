@@ -96,6 +96,48 @@ public class SearchInRotatedSortedArray
         return -1;
     }
 
+    public int search3(int[] nums, int target)
+    {
+        if(nums == null || nums.length == 0)
+            return -1;
+        int low = 0;
+        int high = nums.length - 1;
+        while (low <= high)
+        {
+            int mid = (low + high) / 2;
+            if(nums[mid] == target)
+                return mid;
+            if(nums[low] <= nums[high])
+            {
+                if(nums[mid] < target)
+                    low = mid + 1;
+                else
+                    high = mid - 1;
+            }
+            else
+            {
+                if(nums[high] < target && target < nums[low])
+                    return -1;
+                //在左侧
+                if(nums[low] <= nums[mid])
+                {
+                    if(target < nums[mid] && target >= nums[low])
+                        high = mid - 1;
+                    else
+                        low = mid + 1;
+                }
+                else
+                {
+                    if(target <= nums[high] && target > nums[mid])
+                        low = mid + 1;
+                    else
+                        high = mid - 1;
+                }
+            }
+        }
+        return -1;
+    }
+
     int searchOthers1(int A[], int target) {
         int n = A.length;
         int lo=0,hi=n-1;
@@ -124,10 +166,10 @@ public class SearchInRotatedSortedArray
     public static void main(String[] args)
     {
         SearchInRotatedSortedArray  sirs = new SearchInRotatedSortedArray();
-        int result1 = sirs.search2(new int[]{4,5,6,7,0,1,2,3}, 3);
-        int result2 = sirs.search2(new int[]{4,5,6,7,0,1,2,3}, 0);
-        int result3 = sirs.search2(new int[]{4,5,6,7,0,1,2,3}, 4);
-        int result4 = sirs.search2(new int[]{4,5,6,7,0,1,2,3}, 6);
+        int result1 = sirs.search3(new int[]{4,5,6,7,0,1,2,3}, 3);
+        int result2 = sirs.search3(new int[]{4,5,6,7,0,1,2,3}, 0);
+        int result3 = sirs.search3(new int[]{4,5,6,7,0,1,2,3}, 4);
+        int result4 = sirs.search3(new int[]{4,5,6,7,0,1,2,3}, 6);
 
         System.out.println(result1);
         System.out.println(result2);
