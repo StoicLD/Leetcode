@@ -1,5 +1,7 @@
 package com.joker.easy;
 
+import com.joker.ListNode;
+
 public class MiddleOfTheLinkedList
 {
     public ListNode middleNode(ListNode head)
