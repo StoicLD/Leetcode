@@ -29,6 +29,25 @@ public class BinaryTreeMaximumPathSum
         return Math.max(0, Math.max(leftSum + node.val, rightSum + node.val));
     }
 
+
+    public int maxPathSum2(TreeNode root)
+    {
+        maxSum = root.val;
+        singlePathMaxSum2(root);
+        return maxSum;
+    }
+
+    public int singlePathMaxSum2(TreeNode node)
+    {
+        if(node == null)
+            return 0;
+        int leftValue = Math.max(0, singlePathMaxSum2(node.left));
+        int rightValue = Math.max(0, singlePathMaxSum2(node.right));
+        maxSum = Math.max(maxSum, node.val + leftValue + rightValue);
+        return node.val + Math.max(leftValue, rightValue);
+    }
+
+
     public static void main(String[] args)
     {
         TreeNode root = new TreeNode(-10);
@@ -37,6 +56,6 @@ public class BinaryTreeMaximumPathSum
         root.right.left = new TreeNode(15);
         root.right.right = new TreeNode(7);
         BinaryTreeMaximumPathSum bt = new BinaryTreeMaximumPathSum();
-        Assert.assertEquals(42, bt.maxPathSum(root));
+        Assert.assertEquals(42, bt.maxPathSum2(root));
     }
 }
